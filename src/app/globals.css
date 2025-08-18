@@ -1,3 +1,63 @@
+@keyframes gradientMove {
+  0% {
+    background: linear-gradient(120deg, #e0e7ff 0%, #f0fdfa 100%);
+  }
+  50% {
+    background: linear-gradient(240deg, #f0fdfa 0%, #e0e7ff 100%);
+  }
+  100% {
+    background: linear-gradient(120deg, #e0e7ff 0%, #f0fdfa 100%);
+  }
+}
+
+.animate-gradientMove {
+  animation: gradientMove 8s ease-in-out infinite;
+}
+.overlay-animate {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+.overlay-row {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+}
+.overlay-row-top {
+  top: 0;
+  height: 66vh;
+}
+.overlay-row-bottom {
+  bottom: 0;
+  height: 66vh;
+}
+.overlay-strip {
+  flex: 1;
+  background: #7391f1;
+  border-radius: 0 0 8px 8px;
+  height: 100%;
+}
+.overlay-strip-top {
+  animation: overlayTopOut 2s forwards;
+}
+.overlay-strip-bottom {
+  animation: overlayBottomOut 2s forwards;
+}
+@keyframes overlayTopOut {
+  to {
+    transform: translateY(-100vh);
+  }
+}
+@keyframes overlayBottomOut {
+  to {
+    transform: translateY(100vh);
+  }
+}
 @import "tailwindcss";
 
 :root {
@@ -12,15 +72,8 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: #ffffff;
+  color: #171717;
   font-family: Arial, Helvetica, sans-serif;
 }
