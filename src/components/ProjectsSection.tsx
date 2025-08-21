@@ -89,7 +89,7 @@ export default function ProjectsSection() {
     e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
     githubLink: string | URL | undefined
   ) => {
-    e.stopPropagation(); // Prevent the main project click
+    e.stopPropagation();
     if (githubLink) {
       window.open(githubLink, "_blank", "noopener,noreferrer");
     }
