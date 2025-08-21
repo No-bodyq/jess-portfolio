@@ -76,7 +76,7 @@ export default function ProjectsSection() {
   };
 
   const handleExternalLinkClick = (
-    e: MouseEvent<HTMLButtonElement, MouseEvent>,
+    e: React.MouseEvent<HTMLButtonElement>,
     link: string | URL | undefined
   ) => {
     e.stopPropagation(); // Prevent the main project click
