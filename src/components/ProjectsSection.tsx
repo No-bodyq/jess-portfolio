@@ -79,7 +79,7 @@ export default function ProjectsSection() {
     e: React.MouseEvent<HTMLButtonElement>,
     link: string | URL | undefined
   ) => {
-    e.stopPropagation(); // Prevent the main project click
+    e.stopPropagation();
     if (link) {
       window.open(link, "_blank", "noopener,noreferrer");
     }
