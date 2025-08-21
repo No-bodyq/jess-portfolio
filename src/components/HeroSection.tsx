@@ -4,11 +4,15 @@ import { useEffect, useState } from "react";
 
 export default function HeroSection() {
   const [showLottie, setShowLottie] = useState(false);
+  const [cvDropdown, setCvDropdown] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowLottie(true), 100);
     return () => clearTimeout(timer);
   }, []);
+
+  const handleCvToggle = () => setCvDropdown((open) => !open);
+  const handleCvClose = () => setCvDropdown(false);
 
   return (
     <section className="w-full min-h-[70vh] sm:h-screen py-10 sm:py-20 flex flex-col items-center justify-center relative overflow-hidden text-white mb-8 rounded-lg px-4">
@@ -40,20 +44,51 @@ export default function HeroSection() {
           Hi, I&apos;m Jessica 👋
         </h1>
         <h2 className="text-lg sm:text-2xl font-semibold mb-3 sm:mb-4 text-black">
-          Front-End Developer & UI Enthusiast
+          Front-End Developer & Technical Writer
         </h2>
         <p className="text-base sm:text-lg text-black max-w-xs sm:max-w-xl mx-auto mb-4 sm:mb-6">
-          I craft beautiful, responsive web experiences with React, Next.js, and
-          modern CSS. Passionate about design systems, accessibility, and
-          bringing ideas to life with clean, maintainable code. Let&apos;s build
-          something amazing together!
+          Crafting responsive, accessible web experiences with React/Next.js and
+          turning complex ideas into clear, engaging content.
         </p>
-        <a
-          href="#contact"
-          className="inline-block bg-[#5a72be] text-white font-semibold px-5 sm:px-6 py-3 rounded-full shadow hover:bg-[#7391F1]/80 transition text-base sm:text-lg"
-        >
-          Get in touch
-        </a>
+        <div className="flex flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a
+              href="#contact"
+              className="inline-block bg-[#5a72be] text-white font-semibold px-5 sm:px-6 py-3 rounded-full shadow hover:bg-[#7391F1]/80 transition text-base sm:text-lg"
+            >
+              Get in touch
+            </a>
+            <div className="relative">
+              <button
+                type="button"
+                onClick={handleCvToggle}
+                className="inline-block bg-white text-[#5a72be] font-semibold px-5 sm:px-6 py-3 rounded-full shadow border border-[#5a72be] hover:bg-[#7391F1]/10 hover:cursor-pointer transition text-base sm:text-lg"
+              >
+                Download CV
+              </button>
+              {cvDropdown && (
+                <div className="absolute left-0 top-full mt-2 w-56 bg-white/90 backdrop-blur-lg rounded-2xl shadow-lg border border-gray-100 z-50 animate-fade-in">
+                  <a
+                    href="/cv-frontend.pdf"
+                    download
+                    onClick={handleCvClose}
+                    className="block px-5 py-3 text-[#5a72be] hover:bg-[#7391F1]/10 rounded-xl font-medium text-center"
+                  >
+                    Frontend CV
+                  </a>
+                  <a
+                    href="/cv-writing.pdf"
+                    download
+                    onClick={handleCvClose}
+                    className="block px-5 py-3 text-[#5a72be] hover:bg-[#7391F1]/10 rounded-xl font-medium text-center"
+                  >
+                    Technical Writing CV
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

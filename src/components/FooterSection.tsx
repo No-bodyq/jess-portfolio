@@ -1,6 +1,7 @@
-import { FiHome, FiSend, FiVideo } from "react-icons/fi";
-import { FaLinkedinIn } from "react-icons/fa";
+import { FiHome, FiSend } from "react-icons/fi";
+import { FaLinkedinIn, FaMedium } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa6";
 
 export default function FooterSection() {
   return (
@@ -33,7 +34,7 @@ export default function FooterSection() {
       </div>
       <div className="flex flex-row items-center justify-center gap-5 w-full">
         <a
-          href="https://linkedin.com"
+          href="https://www.linkedin.com/in/jessica-c-adiele-gmcpn-278136264?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
           target="_blank"
           rel="noopener"
           className="rounded-xl bg-white/60 backdrop-blur-lg p-3 text-gray-300 hover:text-[#0A66C2] shadow transition"
@@ -41,24 +42,24 @@ export default function FooterSection() {
           <FaLinkedinIn size={20} />
         </a>
         <a
-          href="https://twitter.com"
+          href="https://github.com/jessydunlimiteddev"
           target="_blank"
           rel="noopener"
           className="rounded-xl bg-white/60 backdrop-blur-lg p-3 text-gray-300 hover:text-black shadow transition"
         >
-          <FaXTwitter size={20} />
+          <FaGithub size={20} />
         </a>
         <a
-          href="mailto:jess@example.com"
+          href="mailto:jessicaadiele575@gmail.com"
           className="rounded-xl bg-white/60 backdrop-blur-lg p-3 text-gray-300 hover:text-[#7391F1] shadow transition"
         >
           <FiSend size={20} />
         </a>
         <a
-          href="#video-call"
+          href="https://medium.com/@jessicaadiele575"
           className="rounded-xl bg-white/60 backdrop-blur-lg p-3 text-gray-300 hover:text-[#1B2B67] shadow transition"
         >
-          <FiVideo size={20} />
+          <FaMedium size={20} />
         </a>
       </div>
     </footer>

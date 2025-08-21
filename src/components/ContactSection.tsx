@@ -18,13 +18,13 @@ export default function ContactSection() {
       <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-8 sm:mt-10 w-full max-w-xs sm:max-w-none justify-center items-center">
         <a
           href="mailto:jess@example.com"
-          className="flex items-center justify-center gap-2 bg-black text-white px-4 py-3 rounded-full text-base sm:text-lg font-medium shadow hover:bg-gray-800 transition w-full sm:w-auto"
+          className="flex items-center justify-center gap-2 bg-black text-white px-4 py-3 rounded-full text-base sm:text-lg font-medium shadow hover:opacity-60 transition w-full sm:w-auto"
         >
           Email me <FiArrowRight size={20} className="sm:w-6 sm:h-6" />
         </a>
         <a
           href="#book-call"
-          className="flex items-center justify-center gap-2 bg-black text-white px-4 py-3 rounded-full text-base sm:text-lg font-medium shadow hover:bg-gray-800 transition w-full sm:w-auto"
+          className="flex items-center justify-center gap-2 bg-black text-white px-4 py-3 rounded-full text-base sm:text-lg font-medium shadow hover:opacity-60 transition w-full sm:w-auto"
         >
           Book a Call <FiArrowRight size={20} className="sm:w-6 sm:h-6" />
         </a>

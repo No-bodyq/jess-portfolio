@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import Image from "next/image";
 import { ExternalLink, Github, ArrowUpRight, ArrowRight } from "lucide-react";
 
@@ -14,17 +14,21 @@ const projects = [
     year: "2024",
     description:
       "A modern AI-powered landing page built with Framer, featuring interactive elements and cutting-edge design principles.",
+    link: "https://luna-ai-demo.framer.website",
+    githubLink: "https://github.com/yourusername/luna-ai-framer",
   },
   {
     id: 2,
-    title: "LUMIG Resin Art Website",
+    title: "How I Started Writing About Tech Before I Felt 'Qualified'",
     image: "/lumig-project.png",
     bg: "/lumig-bg.jpg",
-    tags: ["Website", "Template", "Ux/Ui Design", "Resin Art"],
-    category: "E-commerce",
-    year: "2024",
+    tags: ["Blog", "Technical Writing", "Career", "Personal Growth"],
+    category: "Blog",
+    year: "2025",
     description:
-      "An elegant e-commerce platform showcasing handcrafted resin art pieces with a focus on visual storytelling.",
+      "A personal reflection on starting a tech writing journey without waiting to feel fully 'qualified', and how sharing early experiences can inspire growth and confidence.",
+    link: "https://yourblog.com/tech-writing-journey",
+    githubLink: null,
   },
   {
     id: 3,
@@ -36,6 +40,8 @@ const projects = [
     year: "2023",
     description:
       "Advanced iteration of the Luna AI platform with enhanced user experience and machine learning integration.",
+    link: "https://luna-ai-v2.framer.website",
+    githubLink: "https://github.com/yourusername/luna-ai-v2",
   },
   {
     id: 4,
@@ -47,10 +53,12 @@ const projects = [
     year: "2023",
     description:
       "Comprehensive digital presence for artisan creators with integrated booking and portfolio management.",
+    link: "https://lumig-resin-art.com",
+    githubLink: "https://github.com/yourusername/lumig-resin-website",
   },
 ];
 
-const categories = ["All", "AI/Tech", "E-commerce"];
+const categories = ["All", "AI/Tech", "Blog"];
 
 export default function ProjectsSection() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -60,6 +68,32 @@ export default function ProjectsSection() {
     activeCategory === "All"
       ? projects
       : projects.filter((project) => project.category === activeCategory);
+
+  const handleProjectClick = (link: string | URL | undefined) => {
+    if (link) {
+      window.open(link, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  const handleExternalLinkClick = (
+    e: MouseEvent<HTMLButtonElement, MouseEvent>,
+    link: string | URL | undefined
+  ) => {
+    e.stopPropagation(); // Prevent the main project click
+    if (link) {
+      window.open(link, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  const handleGithubClick = (
+    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>,
+    githubLink: string | URL | undefined
+  ) => {
+    e.stopPropagation(); // Prevent the main project click
+    if (githubLink) {
+      window.open(githubLink, "_blank", "noopener,noreferrer");
+    }
+  };
 
   return (
     <section
@@ -87,7 +121,7 @@ export default function ProjectsSection() {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 ${
+                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 hover:cursor-pointer ${
                   activeCategory === category
                     ? "bg-gray-900 text-white shadow-lg"
                     : "text-gray-600 hover:text-gray-900 hover:bg-gray-50/50"
@@ -106,6 +140,7 @@ export default function ProjectsSection() {
               className="group cursor-pointer"
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(0)}
+              onClick={() => handleProjectClick(project.link)}
             >
               <div className="relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100/50">
                 <div
@@ -156,12 +191,26 @@ export default function ProjectsSection() {
                     }`}
                   >
                     <div className="flex gap-2 sm:gap-3">
-                      <button className="p-2 sm:p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors duration-200">
+                      <button
+                        onClick={(e) =>
+                          handleExternalLinkClick(e, project.link)
+                        }
+                        className="p-2 sm:p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors duration-200"
+                        title="View Project"
+                      >
                         <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                       </button>
-                      <button className="p-2 sm:p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors duration-200">
-                        <Github className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                      </button>
+                      {project.githubLink && (
+                        <button
+                          onClick={(e) =>
+                            handleGithubClick(e, project.githubLink)
+                          }
+                          className="p-2 sm:p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors duration-200"
+                          title="View on GitHub"
+                        >
+                          <Github className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
