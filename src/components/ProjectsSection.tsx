@@ -90,6 +90,7 @@ export default function ProjectsSection() {
     githubLink: string | URL | undefined
   ) => {
     e.stopPropagation();
+    c;
     if (githubLink) {
       window.open(githubLink, "_blank", "noopener,noreferrer");
     }
