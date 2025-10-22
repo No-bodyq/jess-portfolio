@@ -96,7 +96,7 @@ export default function ProjectsSection() {
     }
   };
 
-  return (
+  return 
     <section
       id="work"
       className="relative w-full py-12 sm:py-16 md:py-20 lg:py-28 overflow-hidden"
